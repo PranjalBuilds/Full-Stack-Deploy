@@ -5,7 +5,19 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin: [
+            "http://localhost:5173",
+            "http://localhost:5174",
+            "http://localhost:3000", // serve
+            // will add production URL here
+        ],
+        credentials: true,
+        methods: ["GET", "POST"],
+        allowedHeaders: ["Content-Type", "Authorization"]
+    }
+));
 
 // API Routes
 
